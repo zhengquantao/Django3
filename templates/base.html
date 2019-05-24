@@ -9,12 +9,17 @@
     <link rel="stylesheet" href="/static/theme/{{ blog.theme }}">
     <script src="/static/jquery-3.3.1.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
 <div class="header">
-    <p>{{ blog.title }}</p>
-    <a href="/blog/backend/add_article/">添加博客</a>
+    {% if blog.title %}
+        <p class="col-md-offset-1">{{ blog.title }}</p>
+        {% else %}
+        <p class="col-md-offset-1">Blog</p>
+    {% endif %}
+    <a class="col-md-offset-9 btn btn-primary" href="/blog/backend/add_article/">添加博客</a>
 </div>
 <div class="container">
     <div class="col-md-2">
@@ -22,7 +27,9 @@
             <div class="panel-heading">文章分类</div>
             <div class="panel-body">
                 {% for category in category_list %}
-                    <p>{{ category.title }}({{ category.c}})</p>
+                    <a href="/blog/itemize/?user={{ user }}&message={{ category.title }}">
+                        <p>{{ category.title }}({{ category.c}})</p>
+                    </a>
                 {% endfor %}
             </div>
         </div>
@@ -30,7 +37,9 @@
             <div class="panel-heading">文章标签</div>
             <div class="panel-body">
                 {% for tag in tag_list %}
-                    <p>{{ tag.title }}({{ tag.c }})</p>
+                    <a>
+                        <p>{{ tag.title }}({{ tag.c }})</p>
+                    </a>
                 {% endfor %}
             </div>
         </div>
@@ -38,7 +47,9 @@
             <div class="panel-heading">日期归档</div>
             <div class="panel-body">
                 {% for archive in archive_list %}
-                    <p>{{ archive.archive_ym }}({{ archive.c }})</p>
+                    <a href="/blog/itemize/?user={{ user }}&time={{ archive.create_time|date:"Y-m-d" }}">
+                        <p>{{ archive.create_time|date }}({{ archive.c }})</p>
+                    </a>
                 {% endfor %}
             </div>
         </div>

@@ -68,9 +68,22 @@ def login(request):
     return render(request, "login2.html")
 
 
-@login_required
+def qq(request):
+    pass
+
+
+def weibo(request):
+    pass
+
+
+def weixin(request):
+    pass
+
+
+# @login_required
 def index(request):
     # 查询所有文章列表
+    # print(request.session.get('user_id'))
     article_list = models.Article.objects.all()
     return render(request, "index.html", {"article_list": article_list})
 
@@ -78,8 +91,6 @@ def index(request):
 def logout(request):
     auth.logout(request)
     return redirect('/login/')
-
-
 
 
 def upload(request):
@@ -150,11 +161,10 @@ def home(request, username):
     # 统计当前站点下有哪些标签， 并且按标签统计出文章数
     tag_list = models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title", "c")
     # 按日期归档
-    archive_list = models.Article.objects.filter(user=user).extra(
-        select={"archive_ym": "datetime(create_time, '%%Y-%%m')"}
-    ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym", "c")
+    archive_list = models.Article.objects.filter(user=user).values("create_time").annotate(c=Count("nid")).values("create_time", "c")
     return render(request, 'home.html', {
         'blog': blog,
+        "user": user,
         "article_list": article_list,
         "category_list": category_list,
         "tag_list": tag_list,
@@ -168,9 +178,9 @@ def get_left_menu(username):
 
     category_list = models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title", "c")
     tag_list = models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title", "c")
-    archive_list = models.Article.objects.filter(user=user).extra(
-        select={"archive_ym": "datetime(create_time, '%%Y-%%m')"}
-    ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym", "c")
+    archive_list = models.Article.objects.filter(user=user).annotate(c=Count("nid")).values("create_time", "c")
+    # print(archive_list, '==========')
+    # print(category_list)
     return archive_list, tag_list, category_list
 
 
@@ -186,14 +196,14 @@ def article_detail(request, username, pk):
         return HttpResponse("404")
     blog = user.blog
     article_obj = models.Article.objects.filter(pk=pk).first()
-    category_list, tag_list, archive_list = get_left_menu(username)
+    archive_list, tag_list, category_list = get_left_menu(username)
     comment_list = models.Comment.objects.filter(article_id=pk)
     # print("="*80)
-    # print(comment_list)
     return render(
         request, "article_detail.html", {
             "article": article_obj,
             "blog": blog,
+            "user": user,
             "category_list": category_list,
             "tag_list": tag_list,
             "archive_list": archive_list,
@@ -247,6 +257,7 @@ def comment_tree(request, article_id):
     return JsonResponse(ret, safe=False)  # 如果不是字典要进行序列化就要加safe=False
 
 
+@login_required
 def add_article(request):
     if request.method == "POST":
         title = request.POST.get('title')
@@ -281,6 +292,33 @@ def new_upload(request):
     }
 
     return HttpResponse(json.dumps(ret))
+
+
+def itemize(request):
+    user = request.GET.get('user')
+    message = request.GET.get('message', None)
+    time = request.GET.get('time', None)
+    username = models.UserInfo.objects.filter(username=user).first()
+    if not username:
+        return HttpResponse("404")
+    if time:
+        datetime = time.split("-")
+        article_list = models.Article.objects.filter(user=username, create_time__year=datetime[0], create_time__month=datetime[1], create_time__day=datetime[2])
+
+    if message:
+        category = models.Category.objects.filter(title=message).first()
+        article_list = models.Article.objects.filter(category=category, user=username)
+
+    archive_list, tag_list, category_list = get_left_menu(username)
+    return render(request, 'gatetory.html',
+                  {
+                      "article_list": article_list,
+                      "archive_list": archive_list,
+                      "tag_list": tag_list,
+                      "category_list": category_list
+
+                  })
+
 
 
 # # ORM多列查询  返回QuerySet字典

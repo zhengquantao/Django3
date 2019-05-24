@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block page-main %}
+    {% csrf_token %}
+    <div>
+        <div class="article">
+            {% for article in article_list %}
+                <h3><a href="/blog/{{ article.user.username }}/article/{{ article.pk }}/">{{ article.title }}</a></h3>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="/blog/{{ article.user.username }}/">
+                            <img class="media-object author-img" src="/media/{{ article.user.avatar }}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p>{{ article.desc }}</p>
+                    </div>
+                </div>
+                <div class="article-footer">
+                    <span><a href="/blog/{{ article.user.username }}/">{{ article.user.username }}</a></span>发布于
+                    <span>{{ article.create_time|date:'Y-m-d H:i:s' }}</span>
+                    {#                            <span class="glyphicon glyphicon-comment">评论({{ article.comment_set.all.count }})</span>#}
+                    {#                            <span class="glyphicon glyphicon-thumbs-up">点赞({{ article.up_count }})</span>#}
+                    <i class="fa fa-commenting-o" aria-hidden="true">评论({{ article.comment_set.all.count }})</i>
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true">点赞({{ article.up_count }})</i>
+                </div>
+                <hr>
+                </div>
+            {% endfor %}
+    </div>
+
+{% endblock %}

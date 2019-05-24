@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="info" article_id="{{ article.pk }}"username="{{ request.user.username }}"></div>
-    <p>评论树</p>
+    <a href="/login/">登录参与评论</a>
 
     <div class="comment_tree">
 
@@ -57,7 +57,7 @@
             <p>评论内容</p>
             <textarea name="" id="comment_content" cols="45" rows="10"></textarea>
         </div>
-        <button id="comment_btn">提交评论</button>
+        <button id="comment_btn" class="btn btn-primary">提交评论</button>
 
     {% else %}
         <a href="/login/"></a>
@@ -114,25 +114,26 @@
     </script>
     <script>
         // 获取评论数据，展示评论树结构
+        /**
         $.ajax({
-            url:"/blog/comment_tree/"+'{{ article.pk }}/',
-            success:function(data){
+            url: "/blog/comment_tree/" + '{{ article.pk }}/',
+            success: function (data) {
                 console.log(data);
-                $.each(data,function(index,comment_dict){
+                $.each(data, function (index, comment_dict) {
 
-                    var s='<div class="comment_item" comment_id='+comment_dict.pk+'> <span class="content">'+comment_dict.content+'</span> </div>'
-                    if(comment_dict.parent_comment_id){
+                    var s = '<div class="comment_item" style="height:25px;"  comment_id=' + comment_dict.pk + '> <span class="content">' + comment_dict.content + '</span> </div>'
+                    if (comment_dict.parent_comment_id) {
                         //子评论
-                        pid=comment_dict.parent_comment_id;
-                        $("[comment_id="+pid+"]").append(s);
-                    }else{//跟评论
+                        pid = comment_dict.parent_comment_id;
+                        $("[comment_id=" + pid + "]").append(s);
+                    } else {//跟评论
 
                         $(".comment_tree").append(s);
                     }
                 })
             }
         });
-
+        */
         var pid ="";
         // 提交评论
         $("#comment_btn").click(function () {
