@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92e97d5b-5f1c-4bb8-a4fc-e2afc71f8edc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/book.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/login.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/rain.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/water.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/proverb.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/gatetory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django3/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django3/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django3/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
-    </list>
+    <list default="true" id="92e97d5b-5f1c-4bb8-a4fc-e2afc71f8edc" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,8 +92,8 @@
       <file leaf-file-name="proverb.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/proverb.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="23" column="44" lean-forward="true" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+            <state relative-caret-position="980">
+              <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -269,17 +248,6 @@
               <item name="Django3" type="b2602c69:ProjectViewProjectNode" />
               <item name="Django3" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Django3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Django3" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Django3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Django3" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -432,7 +400,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="66" y="3" width="1052" height="807" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="8" weight="0.32944608" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50151056" side_tool="true" weight="0.3348281" />
@@ -508,7 +475,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -852,8 +819,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/proverb.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="23" column="44" lean-forward="true" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+        <state relative-caret-position="980">
+          <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
         </state>
       </provider>
     </entry>
