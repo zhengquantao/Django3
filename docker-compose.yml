@@ -1,0 +1,30 @@
+version: '3.5'
+services:
+
+    db:
+      container_name: 'postgres'
+      image: postgres
+      environment:
+        POSTGRES_PASSWORD: password123
+      ports:
+        - "5432:5432"
+        # (HOST:CONTAINER)
+      volumes:
+        - pgdata:/var/lib/postgresql/data/
+
+    web:
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      restart: always
+      volumes:
+        - api_data:/Django3
+        # (HOST:CONTAINER) 绝对位置
+      ports:
+        - "8000:8000"
+        # (HOST:CONTAINER)
+      depends_on:
+        - db
+
+volumes:
+    api_data:
+    pgdata:

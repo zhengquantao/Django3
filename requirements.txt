@@ -1,0 +1,6 @@
+pip==20.1.1
+Django==3.0.6
+geetest==3.2.1
+requests==2.23.0
+sqlparse==0.3.1
+urllib3==1.25.9
